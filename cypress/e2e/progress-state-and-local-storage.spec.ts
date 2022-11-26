@@ -22,11 +22,11 @@ describe("Progress State & Local Storage", () => {
   it("the progress state on the lesson page is preserved upon refresh", () => {
     cy.visit(`/${courseSlug}/${lessons[0].slug}`)
     cy.get("#answer-0").click()
-    cy.getBySel("next-lesson-button").should("be.visible")
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-blue-600")
+    cy.getByData("next-lesson-button").should("be.visible")
+    cy.getByData("lesson-complete-0").should("have.class", "bg-blue-600")
     cy.reload()
-    cy.getBySel("next-lesson-button").should("be.visible")
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-blue-600")
+    cy.getByData("next-lesson-button").should("be.visible")
+    cy.getByData("lesson-complete-0").should("have.class", "bg-blue-600")
   })
 
   it("the next lesson button says 'Complete Course' when all course lessons are completed", () => {
@@ -37,16 +37,16 @@ describe("Progress State & Local Storage", () => {
         "eq",
         `/${courseSlug}/${coursesJson[courseSlug].lessons[index].slug}`
       )
-      cy.getBySel(
+      cy.getByData(
         `"challenge-answer-${lesson["challenges"][0]["correctAnswerIndex"]}"`
       ).click()
-      cy.getBySel("lesson-complete-0").should("have.class", "bg-blue-600")
+      cy.getByData("lesson-complete-0").should("have.class", "bg-blue-600")
 
       if (index + 1 === lessons.length) {
-        cy.getBySel("next-lesson-button").contains("Complete Course")
+        cy.getByData("next-lesson-button").contains("Complete Course")
       }
 
-      cy.getBySel("next-lesson-button").click()
+      cy.getByData("next-lesson-button").click()
     })
 
     cy.location("pathname").should("eq", "/")
@@ -55,9 +55,9 @@ describe("Progress State & Local Storage", () => {
   it("all of the lesson steps, on the homepage, for the first completed course are filled and completed", () => {
     cy.visit("/")
 
-    cy.getBySel("course-0").within(() => {
+    cy.getByData("course-0").within(() => {
       _.each(lessons, (lesson, index) => {
-        cy.getBySel(`lesson-complete-${index}`).should("exist")
+        cy.getByData(`lesson-complete-${index}`).should("exist")
       })
     })
   })
@@ -65,9 +65,9 @@ describe("Progress State & Local Storage", () => {
   it("all of the lesson cards on the course page have a status of 'Completed'", () => {
     cy.visit(`/${courseSlug}`)
 
-    cy.getBySel("course-steps").within(() => {
+    cy.getByData("course-steps").within(() => {
       _.each(lessons, (lesson, index) => {
-        cy.getBySel(`lesson-complete-${index}`).should("exist")
+        cy.getByData(`lesson-complete-${index}`).should("exist")
       })
     })
   })

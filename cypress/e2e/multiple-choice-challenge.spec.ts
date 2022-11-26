@@ -13,8 +13,8 @@ describe("Multiple Choice Challenge", () => {
 
   it("it displays the next lesson button when an answer is correct and updates the progress sidebar", () => {
     cy.get("#answer-1").click()
-    cy.getBySel("next-lesson-button").should("be.visible")
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
+    cy.getByData("next-lesson-button").should("be.visible")
+    cy.getByData("lesson-complete-0").should("have.class", "bg-indigo-600")
   })
 
   context("Disable Challenges Functionality", () => {
@@ -29,25 +29,25 @@ describe("Multiple Choice Challenge", () => {
     })
 
     it("toggles the display of the question if checked or not", () => {
-      cy.getBySel("multiple-choice-challenge").should("be.visible")
-      cy.getBySel("skip-challenge-input").click()
-      cy.getBySel("multiple-choice-challenge").should("not.exist")
+      cy.getByData("multiple-choice-challenge").should("be.visible")
+      cy.getByData("skip-challenge-input").click()
+      cy.getByData("multiple-choice-challenge").should("not.exist")
 
-      cy.getBySel("skip-challenge-input").click()
-      cy.getBySel("multiple-choice-challenge").should("exist")
-      cy.getBySel("multiple-choice-challenge").should("be.visible")
+      cy.getByData("skip-challenge-input").click()
+      cy.getByData("multiple-choice-challenge").should("exist")
+      cy.getByData("multiple-choice-challenge").should("be.visible")
     })
 
     it.only("displays the complete lesson button when checked", () => {
-      cy.getBySel("skip-challenge-input").click()
-      cy.getBySel("complete-lesson-button").should("be.visible")
-      cy.getBySel("next-lesson-button").should("not.exist")
+      cy.getByData("skip-challenge-input").click()
+      cy.getByData("complete-lesson-button").should("be.visible")
+      cy.getByData("next-lesson-button").should("not.exist")
     })
 
     it("remains checked after page refresh", () => {
-      cy.getBySel("skip-challenge-input").click()
+      cy.getByData("skip-challenge-input").click()
       cy.reload()
-      cy.getBySel("multiple-choice-challenge").should("not.exist")
+      cy.getByData("multiple-choice-challenge").should("not.exist")
     })
   })
 })

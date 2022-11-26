@@ -14,13 +14,13 @@ describe("RWT Home", function () {
       const description = coursesJson[course].description
       const lessons = coursesJson[course].lessons
 
-      cy.getBySel(`course-${index}`).within(($course) => {
-        cy.getBySel("course-title").contains(title)
-        cy.getBySel("course-description").contains(description)
+      cy.getByData(`course-${index}`).within(($course) => {
+        cy.getByData("course-title").contains(title)
+        cy.getByData("course-description").contains(description)
 
         _.each(lessons, (lesson, index) => {
           const lessonTitle = lessons[index].title
-          cy.getBySel(`lesson-${index}`).contains(lessonTitle)
+          cy.getByData(`lesson-${index}`).contains(lessonTitle)
         })
       })
     })

@@ -1,6 +1,6 @@
 /// <reference path="../global.d.ts" />
 // @ts-nocheck
-Cypress.Commands.add("getBySel", (selector, ...args) => {
+Cypress.Commands.add("getByData", (selector, ...args) => {
   return cy.get(`[data-test=${selector}]`, ...args)
 })
 

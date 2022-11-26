@@ -14,7 +14,7 @@ export default defineConfig({
 
   e2e: {
     baseUrl: "http://localhost:3000",
-    specPattern: "cypress/integration/**/*.spec.{js,jsx,ts,tsx}",
+    specPattern: "cypress/e2e/**/*.spec.{js,jsx,ts,tsx}",
     viewportHeight: 1000,
     viewportWidth: 1280,
     setupNodeEvents(on, config) {

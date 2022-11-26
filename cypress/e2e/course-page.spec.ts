@@ -20,7 +20,7 @@ describe("Next Lesson Button on Course Pages", () => {
 
   it("says 'Start Course' and links to the first lesson if none of the lessons have been completed", () => {
     cy.visit(`/${sectionSlug}`)
-    cy.getBySel("next-lesson-button").then(($btn) => {
+    cy.getByData("next-lesson-button").then(($btn) => {
       // @ts-ignore
       const text = $btn.text()
       // @ts-ignore
@@ -39,7 +39,7 @@ describe("Next Lesson Button on Course Pages", () => {
 
     cy.visit(`/${sectionSlug}`)
 
-    cy.getBySel("next-lesson-button").then(($btn) => {
+    cy.getByData("next-lesson-button").then(($btn) => {
       // @ts-ignore
       const text = $btn.text()
       // @ts-ignore
@@ -60,16 +60,16 @@ describe("Next Lesson Button on Course Pages", () => {
         "eq",
         `/${sectionSlug}/${coursesJson[sectionSlug].lessons[index].slug}`
       )
-      cy.getBySel(
+      cy.getByData(
         `"challenge-answer-${lesson["challenges"][0]["correctAnswerIndex"]}"`
       ).click()
-      cy.getBySel("lesson-complete-0").should("have.class", "bg-blue-600")
-      cy.getBySel("next-lesson-button").click()
+      cy.getByData("lesson-complete-0").should("have.class", "bg-blue-600")
+      cy.getByData("next-lesson-button").click()
     })
 
     cy.visit(`/${sectionSlug}`)
 
-    cy.getBySel("next-lesson-button").then(($btn) => {
+    cy.getByData("next-lesson-button").then(($btn) => {
       // @ts-ignore
       const text = $btn.text()
       // @ts-ignore
