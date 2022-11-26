@@ -2,6 +2,7 @@ import { defineConfig } from "cypress"
 
 export default defineConfig({
   projectId: 'hbgmom',
+  experimentalWebKitSupport: true,
   component: {
     viewportHeight: 1000,
     viewportWidth: 1280,
