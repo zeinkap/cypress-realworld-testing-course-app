@@ -33,6 +33,14 @@ describe("Newsletter Subscribe Form", () => {
                 .should("exist")
                 .contains(email)
         })
+
+        it("does NOT allow an empty email address", () => {
+            cy.getByData("submit-button").click()
+            cy.getByData("error-message")
+                .should("exist")
+                .contains("Email is required")
+        })
+
     })
     
 })
