@@ -11,13 +11,19 @@ if (Cypress.platform === "linux") {
     it("has the correct Host URL", function () {
       cy.request("/robots.txt")
         .its("body")
-        .should("contain", "Host: https://cypress-realworld-testing-course-app.vercel.app/")
+        .should(
+          "contain",
+          "Host: https://cypress-realworld-testing-course-app.vercel.app/"
+        )
     })
 
     it("has the correct url for the Sitemap", function () {
       cy.request("/robots.txt")
         .its("body")
-        .should("contain", "Sitemap: https://cypress-realworld-testing-course-app.vercel.app/")
+        .should(
+          "contain",
+          "Sitemap: https://cypress-realworld-testing-course-app.vercel.app/"
+        )
     })
   })
 }

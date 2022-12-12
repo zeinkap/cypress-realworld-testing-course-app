@@ -5,6 +5,8 @@ export type LessonTableOfContents = {
   current?: boolean
 }
 
+export type EvenNumbers = [2, 4, 6, 8, 10, 12,14, 16, 18, 20, 22, 24, 26, 28, 30]
+
 export interface ChallengeAnswer {
   id: string
   answeredCorrectly?: boolean
