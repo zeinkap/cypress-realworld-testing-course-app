@@ -1,7 +1,18 @@
 /// <reference path="../global.d.ts" />
 // @ts-nocheck
-Cypress.Commands.add("getByData", (selector, ...args) => {
-  return cy.get(`[data-test=${selector}]`, ...args)
+Cypress.Commands.add("getByData", (selector: string) => {
+
+  Cypress.log({
+    displayName: 'getByData',
+    message: selector,
+    consoleProps() {
+      return {
+        selector: selector
+      }
+    }
+  })
+
+  return cy.get(`[data-test=${selector}]`, { log: false })
 })
 
 Cypress.Commands.add("getBySelLike", (selector, ...args) => {
